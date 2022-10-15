@@ -34,7 +34,7 @@ const App = ()=>{
   return(
     <SafeAreaView style={{flex:1}}>
       <View style={styles.container}>
-        <Text style={{fontWeight: "bold", fontSize:17}}>Here are some boxes of different colors</Text>
+        <Text style={{fontWeight: "bold", fontSize:17, paddingTop:40}}>Here are some boxes of different colors</Text>
         <Text style={[styles.a,styles.common]}>Cyan: #2aa198</Text>
         <Text style={[styles.b,styles.common]}>Blue: #268bd2</Text>
         <Text style={[styles.c,styles.common]}>Magenta: #d33682</Text>
