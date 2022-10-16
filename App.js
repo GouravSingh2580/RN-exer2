@@ -1,50 +1,52 @@
 import { template } from '@babel/core'
 import React from 'react'
-import { View , Text, SafeAreaView, StyleSheet, Systrace } from 'react-native'
+import { View , Text, SafeAreaView, StyleSheet, Systrace, FlatList } from 'react-native'
 const styles = StyleSheet.create({
-  container : {
-    flex:1,
-    alignItems:'center',
-    fontSize:60,
+  container: {
+    paddingTop: 50,
+    paddingHorizontal: 10,
+    paddingBottom: 10,
   },
-  common:{
-    paddingHorizontal:10,
-    paddingVertical:0,
-    marginHorizontal:10,
-    paddingTop:3,
-    paddingLeft:100,
-    paddingRight:100,
-    paddingBottom:3,
-    marginVertical:5,
-  },
-  a:{
-    backgroundColor:'#2aa198'
-  },
-  b:{
-    backgroundColor:'#268bd2'
-  },
-  c:{
-    backgroundColor:'#d33682'
-  },
-  d:{
-    backgroundColor:'#cb4b16'
+  heading: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
   }
 })
+
+const COLORS = [
+  { colorName: 'Base03', hexCode: '#002b36' },
+  { colorName: 'Base02', hexCode: '#073642' },
+  { colorName: 'Base01', hexCode: '#586e75' },
+  { colorName: 'Base00', hexCode: '#657b83' },
+  { colorName: 'Base0', hexCode: '#839496' },
+  { colorName: 'Base1', hexCode: '#93a1a1' },
+  { colorName: 'Base2', hexCode: '#eee8d5' },
+  { colorName: 'Base3', hexCode: '#fdf6e3' },
+  { colorName: 'Yellow', hexCode: '#b58900' },
+  { colorName: 'Orange', hexCode: '#cb4b16' },
+  { colorName: 'Red', hexCode: '#dc322f' },
+  { colorName: 'Magenta', hexCode: '#d33682' },
+  { colorName: 'Violet', hexCode: '#6c71c4' },
+  { colorName: 'Blue', hexCode: '#268bd2' },
+  { colorName: 'Cyan', hexCode: '#2aa198' },
+  { colorName: 'Green', hexCode: '#859900' },
+];
+
 const App = ()=>{
   return(
-    <SafeAreaView style={{flex:1}}>
-      <View style={styles.container}>
-        <Text style={{fontWeight: "bold", fontSize:17, paddingTop:40}}>Here are some boxes of different colors</Text>
-        <View>
-          <Text style={[styles.a,styles.common]}>Cyan: #2aa198</Text>
-          <Text style={[styles.b,styles.common]}>Blue: #268bd2</Text>
-          <Text style={[styles.c,styles.common]}>Magenta: #d33682</Text>
-          <Text style={[styles.d,styles.common]}>Orange: #cb4b16</Text>
-        </View>
-      </View>
+    <SafeAreaView>
+      <FlatList
+        style={styles.container}
+        data={COLORS}
+        keyExtractor={item => item.hexCode}
+        renderItem={({ item }) => (
+          <Text style={{backgroundColor: `${item.hexCode}`, paddingVertical:10 , marginVertical:3}}>{item.colorName}</Text>
+        )}
+        ListHeaderComponent={<Text style={styles.heading}>Solarized</Text>}
+      />
     </SafeAreaView>
   )
 }
-
 
 export default App
